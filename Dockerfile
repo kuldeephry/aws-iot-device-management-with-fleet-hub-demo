@@ -1,5 +1,5 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2
-RUN RUN yum update -y && \
+RUN yum update -y && \
     yum install -y amazon-linux-extras wget python3 python3-pip ca-certificates
 RUN update-ca-trust
 RUN amazon-linux-extras enable python3.8
