@@ -7,7 +7,7 @@ RUN yum update -y && \
     update-ca-trust force-enable
 
 # Configure pip to use trusted hosts globally
-RUN mkdir -p /etc/pip.conf && \
+RUN touch -p /etc/pip.conf && \
     echo "[global]" > /etc/pip.conf && \
     echo "trusted-host = \
         pypi.org \
