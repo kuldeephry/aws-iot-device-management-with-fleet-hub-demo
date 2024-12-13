@@ -11,9 +11,12 @@ RUN python3.8 -m pip install --trusted-host pypi.org --trusted-host files.python
 # Install Python packages with trusted hosts
 RUN python3.8 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org \
     boto3 \
-    AWSIoTPythonSDK \
+    aws-iot-device-sdk-python \
     requests \
     cryptography
+
+# Verify installation
+RUN pip3 list | grep AWS
 
 ADD . /home
 WORKDIR /home
