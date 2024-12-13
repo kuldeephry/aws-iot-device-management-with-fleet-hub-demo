@@ -1,5 +1,5 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:latest
-RUN dnf install -y amazon-linux-extras wget python3.9
+RUN dnf install -y wget python3.9
 RUN pip3 install pip --upgrade
 RUN pip3 install boto3 AWSIoTPythonSDK requests cryptography
 ADD . /home
