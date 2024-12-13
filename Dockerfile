@@ -1,4 +1,4 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:latest
+FROM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y amazon-linux-extras wget
 RUN amazon-linux-extras install python3
 RUN pip3 install pip --upgrade
