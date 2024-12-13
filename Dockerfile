@@ -1,15 +1,17 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum update -y && \
-    yum install -y amazon-linux-extras wget python3 python3-pip ca-certificates
+    yum install -y amazon-linux-extras wget ca-certificates
+    
 RUN update-ca-trust
-RUN amazon-linux-extras enable python3.6
-RUN yum install -y python3.6
+# List available extras and install Python 3
+RUN amazon-linux-extras list
+RUN amazon-linux-extras install -y python3
 
 # Upgrade pip with trusted hosts
-RUN python3.6 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pip --upgrade
+RUN pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org pip --upgrade
 
 # Install Python packages with trusted hosts
-RUN python3.6 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org \
+RUN pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org \
     boto3 \
     aws-iot-device-sdk-python \
     requests \
