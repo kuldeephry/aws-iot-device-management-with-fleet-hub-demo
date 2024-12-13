@@ -1,8 +1,16 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:latest
+
 RUN dnf install -y \
     wget \
     python3-pip \
-    && python3 -m pip install --upgrade pip
+    python3-virtualenv
+
+# Create and activate a virtual environment
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Now upgrade pip inside the virtual environment
+RUN pip install --upgrade pip
 RUN pip3 install boto3 AWSIoTPythonSDK requests cryptography
 ADD . /home
 WORKDIR /home
