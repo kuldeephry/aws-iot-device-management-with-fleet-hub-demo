@@ -11,8 +11,9 @@ RUN yum update -y && \
 RUN update-ca-trust force-enable
 
 # Set Python 3.8 as the default python3
-RUN alternatives --set python3 /usr/bin/python3.8 && \
-    alternatives --install /usr/bin/python python /usr/bin/python3.8 1
+RUN alternatives --install python3 /usr/bin/python3.8 && \
+    alternatives --install /usr/bin/python python /usr/bin/python3.8 1 && \
+    ln -sf /usr/bin/python3.8 /usr/bin/python3
 
 # Configure pip to use trusted hosts globally
 RUN touch /etc/pip.conf && \
